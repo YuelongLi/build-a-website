@@ -52,3 +52,30 @@
 <img>, <input>, <link>
 <meta>, <param>, <source>
 <wbr>
+
+<!--Referencing CSS
+    In order to get our CSS talking to our HTML, we need to reference our CSS file within our HTML. The best practice for referencing 
+    our CSS is to include all of our styles in a single external style sheet, which is referenced from within the <head> element of our
+    HTML document. Using a single external style sheet allows us to use the same styles across an entire website and quickly make changes
+    sitewide.-->
+
+<!--Other options for adding CSS
+    Other options for referencing CSS include using internal and inline styles. You may come across these options in the wild.-->
+
+<p>
+    TO create our external CSS style sheet, we'll want to use our text editor of choice again
+    to create a new plain text file with a .css file extension. Our CSS file should be saved
+    within the same folder, or a subfolder, where our HTML file is located.
+</p>  
+
+<p>Within the &lt;head&gt; element of the HTML document, the &lt;link&gt; element is used to
+    define the relationship between the HTML file and the CSS file. Because we are linking to
+    CSS, we use the rel attribute with a value of stylesheet to specify their relationship.
+    Futhermore, the href(or hyperlink reference) attribute is used to indentify the location,
+    or path, of the CSS file.
+</p>
+
+<head>
+    <link rel="stylesheet" href="stylesheets/main.css">
+</head>
+<hr>
