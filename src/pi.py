@@ -9,5 +9,5 @@ def l(E):
 
 c = l(15)*4*2**15
 
-pi = c/2
-print(pi)
+ipi = c/2
+print(ipi)
