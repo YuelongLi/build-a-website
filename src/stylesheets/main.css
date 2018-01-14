@@ -1,16 +1,32 @@
-body{
-    color:blue;
-}
 
+p{
+    color: dimgray;
+}
+strong{
+    color: rgb(51, 51, 194);
+}
 hr{
-    background: rgb(2, 177, 116);
+    background: rgb(187, 187, 187);
     border-radius: 3px;
-    height: 6;
+    height: 2;
 }
 
-p:first-of-type{
-    margin-top:0;
+div {
+    margin:20px;
 }
-p:last-of-type{
-    margin-bottom:0;
+
+h1,h2{
+    color: rgb(49, 49, 49)
+}
+
+h3 {
+    color: #2db34a
+}
+
+.notebox {
+    border-style: solid;
+    border-color: #858585;
+    border-radius: 7px;
+    padding: 20pt;
+    border-width: 1px;
 }

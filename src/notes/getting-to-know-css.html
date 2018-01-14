@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <title>css learning</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../stylesheets/main.css">
+    </head>
+
+    <body>
+        <div id="introduction">
+            <h1>Getting to Know CSS</h1>
+            <p>
+                CSS allows us to add layout and design to our pages, and it allows us to share those styles from element to element and page to page. Before
+                we can unlock all of its features, though, there are a few aspects of the language we must fully understand.
+            </p>
+            <p>
+                First, it's crucial to knwo exactly how styles are rendered. Specifcally, we'll need to know how different types of selectors work and how the
+                oreder of those sleectors can afect how our styles are rendered. We'll also want to understand a few common property values that continually 
+                appear within CSS, particularly those that deal with color and length.
+            </p>
+        </div>
+
+        <div id="the-cascade">
+            <h2>The Cascade</h2>
+            <p>
+                 We’ll begin breaking down exactly how styles are rendered by looking at what is known as the cascade and studying a few
+                examples of the cascade in action. Within CSS, all styles cascade from the top of a style sheet to the bottom, allowing different
+                styles to be added or overwritten as the style sheet progresses.
+            </p>
+            <p>
+                 For example, say we select all paragraph elements at the top of our style sheet and set their background color to orange
+                and their font size to 24 pixels. Then towards the bottom of our style sheet, we select all paragraph elements again and
+                set their background color to green, as seen here.
+            </p>
+            <p>
+                Because the paragraph selector that sets the background color to green comes after
+                the paragraph selector that sets the background color to orange, it will take precedene
+                in the cascade. All of the paragraphs will appear with a green background. The font size
+                will remain 24 pixels because the second paragraph selector didn't identify a new font size.
+            </p>
+            <div>
+                <h3>Cascading Properties</h3>
+                <p>
+                    The cascaded also works with properties inside individual selectors. Say if we specify the background of an element to green
+                    and later declare the background to be orange in the same scope, because the orange background color declaration comes
+                    after the green background color declaration, it will overrule the orange background.
+                </p>
+            </div>
+        </div>
+
+        <div id="Specificity">
+            <h2>Calculating Specificity</h2>
+            <p>
+                Every selector in CSS has a specificity weight. A selector’s specificity weight, along with its placement in the cascade,
+                identifies how its styles will be rendered.
+            </p>
+            <p>
+                The type selector has the lowest specificity weight and holds a point value of 0-0-1. The class selector has a medium specificty 
+                weight and holds a point value of 1-0-0. As we can see, specificity poings are calculated using three columns. The first coloumn
+                counts id selectors, the second colum class selectors, and the third column type selectors.
+            </p>
+            <div class="notebox">
+                <h3>Specificity Points</h3>
+                <p>
+                    Specificity points are intentionally hyphenated, as their values are not computed from a base of 10. Class selectors do
+                    not hold a point value of 10, and ID selectors do not hold a point value of 100. Instead, these points should be read as
+                    0-1-0 and 1-0-0 respectively. We’ll take a closer look at why these point values are hyphenated shortly, when we combine
+                    selectors.
+                </p>
+            </div>
+            <p>
+                <strong>
+                    The higher the specificity weight of a selector, the more superiority the selector is given when a styling conflict occurs. 
+                    For example if a paragraph element is selectred using a type selector in one place and an ID selector in another, the ID selector
+                    will take precedence over the type selector regardless of where the ID selector appears in the cascade.
+                </strong>
+            </p>
+
+            <p>
+                 Understanding how the cascade and specificity work is a huge hurdle, and we’ll continue to cover this topic. For now, let’s
+                look at how to be a little more particular and intentional with our selectors by combining them. Keep in mind that as we
+                combine selectors, we’ll also be changing their specificity.
+            </p>
+        </div>
+
+        <div>
+            <h2>Combining Selectors</h2>
+            <p>
+                If we want to select an element 'a' that is a child of another element 'b', then the selector in css would be:
+                <br>b a{<br>    ...<br>}
+            </p>
+            <p>
+                 When selectors are combined they should be read from right to left. The selector farthest to the right, directly before
+                the opening curly bracket, is known as the key selector. The key selector identifies exactly which element the styles will
+                be applied to. Any selector to the left of the key selector will serve as a prequalifier.
+            </p>
+
+            <p>Let’s take a look at how combining selectors changes a selector’s specificity weight:</p>
+
+            <div>
+                <h3>Specificity Within Combined Selectors</h3>
+                <p>
+                    When selectors are combined, so are the specificity weights of the individual selectors.
+                    These combined specificity weighs can be calculated by counting each different type of selector
+                    within a combined selector.
+                </p>
+
+                <div class="notebox">
+                    .hotdog p.mustard { <br>background: yellow; <br>}
+                    <br>.hotdog p { <br>background: brown; <br>}
+                </div>
+
+                <p>
+                    Looking at our combined selectors from here, the second selector, .hotdog p, had both a class selector and a type selector.
+                    Knowing that the point value of a class selector is 0-1-0 and the point value of a type selector is 0-0-1, the total combined
+                    point value would be 0-1-1, found by adding up each kind of selector.
+                </p>
+
+                <p>
+                    The first selector, .hotdog p.mustard, had two class selectors and one type selector. Combined, the selector has a point value of 
+                    0-2-1. The 0 in the first column is for zero ID selectors, the 2 in the second column is for two class selectors, and the 1 in the
+                    the last column if for one type selector.
+                </p>
+
+                <p>
+                    Comparing the two selectors, the first selector, with its two classes, has a noticeably higher specificity weight and point
+                    value. As such it will take precedence within the cascade. If we were to flip the order of these selectors within our style
+                    sheet, placing the higher-weighted selector below the lower-weighted selector as shown here, the appearance of their styles
+                    would not be affected due to each selector’s specificity weight.
+                </p>
+            </div>
+            
+        </div>
+    </body>
+</html>
