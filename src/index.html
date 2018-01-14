@@ -1,13 +1,276 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Styles Conference</title>
-        <link rel="stylesheet" href="stylesheets/main.css">
-        
-    </head>
-    <body>
-        <h1 lang = "en">Styles Conferences</h1>
-        <p>Every year...</p>
-    </body>
+<html>
+
+<head>
+    <title>HTML Learning</title>
+</head>
+
+<body>
+    <style>
+        div {
+            margin-top: 30px
+        }
+
+        h3 {
+            color: #2db34a
+        }
+
+        .notebox {
+            border-style: solid;
+            border-radius: 7px;
+            margin: 20pt;
+            padding: 20pt;
+            border-width: 1px;
+        }
+    </style>
+    <div>
+        <h1>Learning HTML</h1>
+    </div>
+    <div>
+        <h2 id="introduction">Semantics</h2>
+        So what exactly are semantics? Semantics within html is the practice of giving content on the page meaning and structure
+        by using the proper element. Semantic code describes the value of content on a page, regardless of the style or appearance
+        of that content. Several benefits of using semanticc elements include enabling computers, screen readers, search
+        engines, and other devices to adequately read and understand the content on a web page.
+    </div>
+    <div>
+        <h2>Division And Spans</h2>
+        <!--Divisions, or <div>s, and <span>s are HTML elements that act as containers solely for 
+                    styling purposes. As generic containers, they do not come with any overarching meaning
+                    or semantic value. Paragraphs are semantic in that content wrapped within a <p> element 
+                    is known and understood as a paragraph. <div>s and <span>s do not hold any such meaning 
+                    and are simply containers.-->
+        A division is a block-level element that is commonly used to identify large groupings of content, and which helps to build
+        a wb page's layout and design. A
+        <span>span</span>, on the other hand, is an inline-level elements may be nested inside one another; however, they cannot
+        wrap block-level elements. We'll usually see inline-level elements with smaller pieces of a content, such as a few
+        words.
+        <!--
+                <span>
+                    <div>
+                        counter example
+                    </div>
+                </span>
+            -->
+    </div>
+
+    <div>
+        <h2>Text-Based Elements </h2>
+        Many different forms of media and content exist online; however, text is predominant. Accordingly, there are a number of
+        different elemetns ofr displaying text on a web page. For now we'll focus on the more popular elements, including
+        headings, paragraphs, bold to show importance, and italics for emphasis.
+
+        <h3 style="color:#2db34a">Headings</h3>
+
+        <p>
+            Headings are block-level elements, and they come in six different rankings, (h1) through (h6). Headings help to quickly break
+            up content and establish hierachy, and they are key identifiers for users reading a page. They also help search
+            enines to index and determine the content on a page.
+        </p>
+
+        <p>
+            Each heading level should be used where it is semantically valued, and should not be used to make text bold or big—there
+            are other, better ways to do that.
+        </p>
+
+        <h3 style="color:#2db34a">Paragraphs</h3>
+        <p>
+            Headings are often followed by supporting paragraphs. Paragraphs are defined using the (p) block-level element. Paragraphs
+            can appear one after the other, adding information to a page as desired.
+        </p>
+
+        <h3>Bold Text With Strong</h3>
+        <p>
+            The (strong) element is semantically used to give strong importance to text, and is thus the most popular option for
+            <strong>bolding</strong> text. The (b) element, on the other hand, semantically means to stylistically offset text, which
+            isn’t always the best choice for text deserving prominent attention. We have to gauge the significance of the
+            text we wish to set as bold and to choose an element accordingly.
+        </p>
+
+        <h3>Italicize Text with Emphasis</h3>
+        <p>
+            The (em) element is used semantically to place a stressed
+            <em>emphasis</em> on text; it is thus the most popular option for italicizing text. The other option, the (i) element,
+            is used semantically to convey text in an
+            <i>alternative</i> voice or tone, almost as if it were placed in quotation marks. Again, we will need to gauge the
+            significance of the text we want to italicize and choose an element accordingly.
+        </p>
+    </div>
+
+    <div>
+        <h2>Building Structure</h2>
+        <img src="https://learn.shayhowe.com/assets/images/courses/html-css/getting-to-know-html/building-structure.png" alt="structure demonstration"
+            style="width:50%">
+        <p>
+            The &lt;header&gt; element, like it sounds, is used to identify the top of a page, article, section, or other segment of
+            a page. In general, the &lt;header&gt; element may include a heading, introductory text, and even naviation.
+        </p>
+
+        <div class="notebox">
+            <h4>&lt;header&gt; vs. &lt;head&gt; vs. &lt;h1~6&gt;</h4>
+            <p>
+                It is easy to confuse the (header) element with the (head) element or the heading elements, (h1) through (h6). They all have
+                different semantic meanings and should be used according to their meanings. For reference:
+            </p>
+
+            <p>
+                The (header) element is a structural element that outlines the heading of a segment of a page. It falls within the (body)
+                element. The (head) element is not displayed on a page and is used to outline metadata, including the document
+                title, and links to external files. It falls directly within the (html) element.
+            </p>
+        </div>
+
+        <div>
+            <h3>Navigation</h3>
+            <p>
+                The (nav) element identifies a section of major navigational links on a page. The (nav) element should be reserved for primary
+                navgation sections only, such as global navigation, a table of content, previous/next links, or other noteworthy
+                of navigational links.
+            </p>
+            <p>
+                Most commonly, links included wihtin the (nav) element will link to other pages within the same website or to parts of the
+                same web page. Miscelllaneous one-off links should not be wrapped within the (nav) element; they should use
+                the anchor element, (a), and the anchor element alone.
+            </p>
+
+        </div>
+        <div>
+            <h3>
+                Article
+            </h3>
+
+            <p>
+                The (article) element is used to identify a section of independent, self-contained content that may be independently distributed
+                or reused. We’ll often use the (article) element to mark up blog posts, newspaper articles, user-submitted
+                content, and the like.
+            </p>
+
+            <p>
+                When deciding whether to use the (article) element, we must determine if the content within the element could be replicated
+                elsewhere without any confusion. If the content within the (article) element were removed from the context
+                of the page and placed, for example, within an email or printed work, that content should still make sense.
+            </p>
+        </div>
+
+        <section>
+            <h3>Section</h3>
+            The section element is used to indentify a thematic grouping of content, which gnerally, but not always, includes a heading.
+            The grouping grouping of content within the section element may be generic in nature, but it's useful to identify
+            all of the content as related
+            <br/> The section element is commonly used to break up and provide hierachy to a page.
+        </section>
+
+        <div>
+            <h3>Aside</h3>
+            <aside>
+                The (aside) elements holds content, such as sidebars, inserts or brief explanations, that is tangetially related to the content
+                surrounding it. When used within an (article) element, for example, the (aside) element may identify content
+                related to the author of the article.
+            </aside>
+            <br>
+            <p>
+                We may instinctively think of an (aside) element as an element that ppears off to the left or right side of a page. However
+                an (aside) elements actually appears on a new line just as every bock-level does, so if we want to change
+                the positioning of the element to side, we would need to position with css style.
+            </p>
+        </div>
+
+        <footer>
+            <h3>Footer</h3>
+            The (footer) element identifies the closing or end of a page, article, section, or other setment of a page. Genrally the
+            (footer) element is found at the bottom of its parent. Content within the (footer) element should be relative
+            information and should not diverge from the document or section it is included within.
+        </footer>
+    </div>
+
+
+    <div>
+        <h2>Creating Hyperlinks</h2>
+        <p>
+            Along with text, one of the core components of the Internet is the hyperlink, which provides the ability to link from one
+            web page or resource to another. Hyperlinks are established using the anchor, &lt;a&gt;, inline-level element.
+            In order to create a link from one page (or resource) to another, the href attribute, known as a hyperlink reference,
+            is required. The href attribute value identifies the destination of the link.
+        </p>
+
+        <div class="notebox">
+            <h3>
+                Wrapping Block-Level Elements with Anchors
+            </h3>
+            By nature of the anchor element, (a), is an inline element, and according to web standards, inline-level elements may not
+            wrapt block-level elements. With the introduction of HTML5, however, anchor elements specifically have permission
+            to wrap either block, inline or any tlevel elements. This is a break from the standard convention, but it's permissbible
+            inorder to enable entire blocks of content on a page to become links.
+        </div>
+
+        <div>
+            <h3>Relative &amp; Absolute Paths</h3>
+
+            The two most common types of links are links to other pages of the same website and links to other websites. These links
+            are identified by their href attribute values, also known as their paths.
+            <br> Links pointing to other pages of the same website will have a relative path, which does not include the domain
+            (.com, .org, .edu, etc.) in the href attribute value. Because the link is pointing to another page on the same
+            website, the href attribute value needs to include only the filename of the page being linked to: about.html,
+            for example.
+            <br> Should the page being linked to reside within a different directory, or folder, the href attribute value needs
+            to reflect this as well. Say the about.html page resides within the
+            <span style="color:cornflowerblue">pages</span> directory; the relative path would then be
+            <span style="color:cornflowerblue">pages</span>/about.html.
+            <br> Linking to other websites outside of the current one requires an absolute path, where the href attribute value
+            must include the full domain. A link to Google would need the href attribute value of http://google.com, starting
+            with http and including the domain, .com in this case. Linking to local files requires an absolute path, where
+            the href attribute contain the local url of the file.
+            <a href="G:\Programming\GitHub\build-a-website\src\notes\notes.html">Click to open notes.html</a>
+        </div>
+
+        <div>
+            <h3>Linkding to an Email Address</h3>
+            Occasionally we may want to create a hyperlink to our email address—for example, hyperlink text that says “Email Me,” which
+            when clicked opens a user’s default email client and pre-populates part of an email. At a minimum the email address
+            to which the email is being sent is populated; other information such as a subject line and body text may also
+            be included.
+            <br> To create an
+            <a href="mailto:yuelong.edu@gmail.com">email link</a>, the href attribute value needs to start with mailto: followed by the email address to which the
+            email should be sent. To create an email link to yuelong.edu@gmail.com, for example, the href attribute value
+            would be mailto: yuelong.edu@gmail.com. Additionally, subject, body text, and other information for the email
+            may be populated. To add a subject line, we’ll include the subject= parameter after the email address. The first
+            parameter following the email address must begin with a question mark, ?, to bind it to the hyperlink path. Multiple
+            words within a subject line require that spaces be encoded using %20.
+            <br> Adding body text works in the same way as adding the subject, this time using the body= parameter in the href
+            attribute value. Because we are binding one parameter to another we need to use the ampersand, &amp;, to separate
+            the two. As with the subject, spaces must be encoded using %20, and line breaks must be encoded using %0A.
+
+            <div class="notebox">
+                <a href="mailto:yuelong.edu@gmail.com?subject=Html%20hyperlink%20learning&body=Hi%20Yuelong">
+                    <h3>email myself</h3>
+                </a>
+            </div>
+        </div>
+        <div>
+            <h3>Opening links in a new window</h3>
+            One feature availble with hyperlinks is the ability to deterine where a link opens when clicked. Without any specification,
+            links open in the same window from which they are clikced, however, links may also be opened in new windows.
+            To trigger the action of opening a link in a new window, use the target attribute with a value of _blank. The
+            target attribute determines exactly where the link will be displayed, and the _blank value specifies a new window.
+            <br>
+            <a href="http://cloudnest.org" target="_blank">Cloudnest.org</a>
+        </div>
+        <div>
+            <h3>Linking to parts of the same page</h3>
+            Periodically we'll see hyperlinks that link to part of the same page the link appears on. A common exaple of these same-page
+            links are "Back to top" links that return a user to the top of a page.
+            <p>
+                We can create an on-page link by first setting an id attribute on the element we wish to link to, then using the value of
+                that id attribute within an anchor element’s href attribute.
+            </p>
+            <p>
+                Using the “Back to top” link as an example, we can place an id attribute value on the taget element, and create an anchor
+                element with an href attribute value of #top, pound sign and all, to link to the target element.
+            </p>
+            <a href="#introduction" , target="_blank">Go to semantic markup introduction</a>
+            <br>
+            <a href="#introduction">Go to semantic markup introduction</a>
+        </div>
+    </div>
+</body>
+
 </html>
