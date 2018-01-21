@@ -1,0 +1,160 @@
+<html>
+    <head>
+        <title>The box model</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="../stylesheets/main.css">
+    </head>
+    <body>
+        <h1>Opening the box model</h1>
+        <p>
+             We've familiarized ourselves with HTML and CSS; we know what they look like and how to accomplish some of the basics. now
+            we're going to go a bit deeper and llok at exactly how elements are displayed on a page and how they are sized.
+        </p>
+        <div>
+            <h2>How are elements displayed?</h2>
+             Before jumping into the box model, it helps to understand how elements are displayed. In Lesson 2 we covered the difference
+            between block-level and inline-level elements. To quickly recap, block-level elements occupy any available width, regardless
+            of their content, and begin on a new line. Inline-level elements occupy only the width their content requires and line up
+            on the same line, one after the other. Block-level elements are generally used for larger pieces of content, such as headings
+            and structural elements. Inline-level elements are generally used for smaller pieces of content, such as a few words selected
+            to be bold or italicized.
+            <div>
+                <h3>Display</h3>
+                How elements are dispalyed - as inline or block-level elements - is determined by the display property. Every element come
+                with a default display property value; however, as with all other property values, the value may be overwritten with the 
+                "display:" property with values such as "block, inline, inline-block, and none"
+                <div class="notebox" id="demo1">
+                    <style>
+                        /**
+                            We can change an element’s display property value by selecting that element within CSS and declaring a new display 
+                            property value. A value of block will make that element a block-level element.
+                        **/                    
+                        #demo1 p {
+                            display: block;
+                        }
+                    
+                        /**A value of inline will make that element an inlin-level element.**/                    
+                        #demo1 p {
+                            display: inline;
+                        }
+                    
+                        /**
+                            Things get interesting with the inline-block value. Using this value will allow an element to behave as a block-level 
+                            element, accepting all box model properties (which we’ll cover soon). However, the element will be displayed in line 
+                            with other elements, and it will not begin on a new line by default.
+                        **/                   
+                        #demo1 p {
+                            display: inline-block;
+                        }
+                    </style>
+                    <p>Paragraph one</p>
+                    <p>Paragraph two</p>
+                    <p>Paragraph three</p>
+                </div>
+                 <p>
+                    Lastly, using a value of none will completely hide an element and render the page as if that element doesn’t exist. Any
+                    elements nested within this element will also be hidden.
+                 </p>
+            </div>
+        </div>
+        <div>
+            <h2>Working with the Box Model</h2>
+            <p>
+                Every element is a rectangular box, and there are several properties that determine the size of that box. The core of the box
+                is defined by the width and height o an element, which may be determined by the display property, by the contents of the element,
+                which may be determined by the display property, by the contents of the element, or by specified <span class="p">width</span> and 
+                <span class="p">height</span> properties. <span class="p">padding</span> and then <span class="p">border</span> expand the dimensions
+                of the box outward from the element's width and height. Lastly, any margin we have specified will follow the border. 
+            </p>
+            <img src="https://learn.shayhowe.com/assets/images/courses/html-css/opening-the-box-model/box-model.png" alt="box model demonstration" width="100%">
+            let's look at the following code:
+            <div class="notebox">
+                 div { 
+                    <p class="indent">
+                         border: 6px solid #949599;
+                        <br>height: 100px;
+                        <br>margin: 20px;
+                        <br>padding: 20px;
+                        <br>width: 400px;
+                    </p>
+                }
+            </div>
+             According to the box model, the total width of an element can be calculated using the following formula:
+             <div class="notebox">
+                 margin-right + border-right + padding-right + width + padding-left + border-left + margin-left
+             </div>
+             The same concepts applies similarly to the height.
+             <br>
+             <br>
+             <div class="notebox">
+                 <h3>Margin &amp; Padding on Inline-Level Elements</h3>
+                 <p>
+                    Inline-level elements are affected a bit differently than block and inline-block elements when it comes to margins and padding.
+                    Margins only work horizontally—left and right—on inline-level elements. Padding works on all four sides of inline-level elements;
+                    however, the vertical padding—the top and bottom—may bleed into the lines above and below an element.
+                 </p>
+                 <p>
+                    Margins and padding work like normal for block and inline-block elements.
+                 </p>
+             </div>
+             <div>
+                 <h3>Borders</h3>
+                 <p>
+                     Borders fall between the padding and margin, providing an outline around an element. The border property requires three
+                    values: <span class="p">width</span>, <span class="p">style</span>, and <span class="p">color</span>. Shorthand values 
+                    for the border property are stated in that order—<span class="p">width</span>,
+                    <span class="p">style</span>,
+                    <span class="p">color</span>. In
+                    longhand, these three values can be broken up into the border-width, border-style, and border-color properties. These longhand
+                    properties are useful for changing, or overwriting, a single border value.
+                 </p>
+             </div>
+             <div>
+                 <h3>Box Sizing</h3>
+                 Until now the box model has been an additive design. We always need to add the width, padding and border property values together to
+                 get the actual, full width of an element. 
+                 
+                 The box model may, however, be changed to support different calculations. CSS3 introduced the box-sizing propety, which allows us to 
+                 change exactly how the box model works and hwo an element's size is caluated. The property accepts three primary values --- <span class="p">content-box</span>,
+                 <span class="p">padding-box</span>, and <span class="p">border-box</span> --- each of which has a slightly different impact on how the box size is calculated. 
+             </div>
+            <div>
+                <h3>Content Box</h3>
+                <p>
+                    The <span class="p">content-box</span> value is the default value, leaving the box model as an additive design. If we don't use the <span class="p">box-sizing</span>
+                    property, this will be the default value for all elements. The size of an element begins with the <span class="p">width</span> and <span class="p">height</span> properties,
+                    and then any padding, border or margin property are added on from there.
+                </p>
+                <div class="notebox">
+                    <h3>Broser-Specific Properties and Values</h3>
+                    <p>
+                         Vendor prefixes may be seen on both properties and values, all depending on the CSS specification. Here they are shown on
+                        the box-sizing property. Browser vendors were free to chose when to use a prefix and when not to. Thus, some properties and
+                        values require vendor prefixes for certain browser vendors but not for others.
+                    </p>
+                    <p>
+                         Moving forward, when a property or value needs a vendor prefix, the prefix will only be used in the introduction of that
+                        property or value (in the interest of keeping our code digestible and concise). Do not forget to add the necessary vendor
+                        prefixes when you’re actually writing the code.
+                    </p>
+                    <p>
+                        For reference, the most common vendor prefixes are outlined here:
+                    </p>
+                    <p class="indent">
+                        Moxilla Firefox: <span class="p">-moz-</span>
+                        <br>Microsoft Internet Explorer: <span class="p">-ms-</span>
+                        <br>Webkit (Google Chrome and Apple Safari): <span class="p">-webkit-</span>
+                    </p>
+
+                </div>
+            </div>
+            <div>
+                <h3>Border Box</h3>
+                <p>
+                    Lastly, the <span class="p">border-box</span> value alters the box model so that any <span class="p">border</span>
+                </p>
+            </div>
+        </div>
+        
+    </body>
+</html>

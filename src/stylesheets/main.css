@@ -19,7 +19,7 @@ h1,h2{
     color: rgb(49, 49, 49)
 }
 
-h3 {
+h3,h4,h5{
     color: #2db34a
 }
 
@@ -29,4 +29,12 @@ h3 {
     border-radius: 7px;
     padding: 20pt;
     border-width: 1px;
+}
+
+span.p{
+    color: #60aaff;
+}
+
+p.indent{
+    padding-left: 3em;
 }

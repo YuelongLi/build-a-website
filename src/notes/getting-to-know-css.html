@@ -105,8 +105,8 @@
                 </p>
 
                 <div class="notebox">
-                    .hotdog p.mustard { <br>background: yellow; <br>}
-                    <br>.hotdog p { <br>background: brown; <br>}
+                    .hotdog p.mustard { <br>&nbsp;&nbsp;&nbsp;background: yellow; <br>}
+                    <br><br>.hotdog p { <br>&nbsp;&nbsp;&nbsp;background: brown; <br>}
                 </div>
 
                 <p>
@@ -125,10 +125,149 @@
                     Comparing the two selectors, the first selector, with its two classes, has a noticeably higher specificity weight and point
                     value. As such it will take precedence within the cascade. If we were to flip the order of these selectors within our style
                     sheet, placing the higher-weighted selector below the lower-weighted selector as shown here, the appearance of their styles
-                    would not be affected due to each selector’s specificity weight.
+                    would not be affected due to each selector's specificity weight.
                 </p>
+                <div class="notebox" id="specificity-example">
+                    <style>
+                       #specificity-example .hotdog p.mustard{
+                           background:rgb(202, 206, 2);
+                           color:white;
+                       } 
+                       #specificity-example .hotdog p{
+                           background:orange;
+                           color:blue;
+                       }
+                       #specificity-example .hotdog > p{
+                           background: orangered;
+                           color:white;
+                       }
+                    </style>
+                    <div class="hotdog">
+                        <p>
+                            p.hotdog directChild p
+                        </p>
+                        <p class="mustard">
+                            div.hotdog p.mustard
+                        </p>
+                        <div class="notebox">
+                            <p>
+                                p.hotdog p
+                            </p>
+                            <p class="mustard">
+                                p.hotdog p.mustard
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
+            <div>
+                <h3>How is specificity calculated?</h3>
+                <p>
+                     Specificity is a weight that is applied to a given CSS declaration, determined by the number of each selector type in the
+                    matching selector. When multiple declarations have equal specificity, the last declaration found in the CSS is applied to
+                    the element. Specificity only applies when the same element is targeted by multiple declarations. As per CSS rules, directly
+                    targeted elements will always take precedence over rules which an element inherits from its ancestor.
+                </p>
+                <div>
+                    <h4>Selector Types</h4>
+                     The following list of selector types increases by specificity: 
+                    <p>
+                        <br>0. Type selectors (e.g., h1) and pseudo-elements (e.g., ::before).
+                        <br>1. Class selectors (e.g., .example), attributes selectors (e.g., [type="radio"]) and pseudo-classes (e.g., :hover).
+                        <br>2. ID selectors (e.g., #example).
+                    </p>
+                    <p>
+                         Universal selector (*), combinators (+, >, ~, ' ') and negation pseudo-class (:not()) have no effect on specificity. (The
+                        selectors declared inside :not() do, however.) Inline styles added to an element (e.g., style="font-weight:bold") always
+                        overwrite any styles in external stylesheets, and thus can be thought of as having the highest specificity.
+                   </p>
+                </div>
+            </div>
+
+            <div>
+                <h2>Layering with multiple classes</h2>
+                <p>
+                    Elements in HTML can have multiple classes as long as there are separated by spaces. We can add styles to one class of the element
+                    and and layer another style through a more specific class. 
+                </p>
+                <p>
+                    We can tie styles we want to continually reuse to one class and layer on additional styles from another class.
+                </p>
+                <div class="notebox" id="demo2">
+                    <style>
+                        .btn {
+                            font-size: 16px;
+                        }
+                        .btn-success {
+                            background: green;
+                        }
+                        .btn-danger {
+                            background: red;
+                        }
+                    </style>
+                    <a href="" class="btn-danger btn-success">danger</a>
+                    <a href="" class="btn btn-success">success</a>
+                </div>
+                <p>
+                    Through this experiment we find out that the order the class values appear in the "class" atribute doesn't matter.
+                    The styles of an element will always be loaded in the sequence of there appearances in the stylesheet. html
+                </p>
+            </div>
+        </div>
+        <div>
+            <h2>Common properties in CSS</h2>
+            <div>
+                <h3>Lengths</h3>
+                <p>
+                     Length values within CSS are similar to colors in that there are a handful of different types of values for length, all
+                    of which serve distinct purposes. Length values come in two different forms, absolute and relative, each of which uses different
+                    units of measurement.
+                </p>
+                <h3>Absolute Lengths</h3>
+                <p>Absolute length values are the simplest length values, as they are fixed to a physical measurement, such as inches, centimeters,
+                or millimeters. The most popular absolute unit of measurement is known as the pixel and is represented by the px unit notation.</p>
+                <div>
+                    <h4>Pixels</h4>
+                    <p>
+                         The pixel is equal to 1/96th of an inch; thus there are 96 pixels in an inch. The exact measurement of a pixel, however,
+                        may vary slightly between high-density and low-density viewing devices.
+                    </p>
+                    <p>As a example: 14px;</p>
+                </div>
+                <div>
+                    <h4>Points(pt)</h4>
+                    <p>
+                        Points are traditionally used in print media (anything that is to be printed on paper, etc.). One point is equal to 1/72
+                        of an inch. Points are much like pixels, in that they are fixed-size units and cannot scale in size.
+                    </p>
+                </div>
+                <p>Relative Lengths</p>
+                <p>
+                     In addition to absolute length values, there are also relative length values. Relative length values are a little more complicated,
+                    as they are not fixed units of measurement; they rely on the length of another measurement.
+                </p>
+                <div>
+                    <h4>Percentages</h4>
+                    <p>
+                         Percentages, represented by the % unit notation, are one of the most popular relative values. Percentage lengths are defined
+                        in relation to the length of another object. For example, to set the width of an element to 50%, we have to know the width
+                        of its parent element, the element it is nested within, and then identify 50% of the parent element’s width.
+
+                    </p>
+                </div>
+                <div>
+                    <h4>Em</h4>
+                    <p>
+                         The em unit is also a very popular relative value. The em unit is represented by the em unit notation, and its length is
+                        calculated based on an element’s font size.
+                    </p>
+                    <p>
+                         A single em unit is equivalent to an element’s font size. So, for example, if an element has a font size of 14 pixels and
+                        a width set to 5em, the width would equal 70 pixels (14 pixels multiplied by 5).
+                    </p>
+                </div>
+            </div>
         </div>
     </body>
 </html>
