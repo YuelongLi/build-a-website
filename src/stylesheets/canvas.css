@@ -6,22 +6,29 @@
           box-sizing: border-box;
 }
 
-@media (min-width: 1000px){
-    body{
-        width: 1000px;
-        margin: auto;
-    }
+html,body{
+    height: 100%;
 }
 
-a.button{
+body{
+    margin: 0;
+    overflow: hidden
+}
+
+canvas {
+    width: 75%;
+    margin: 5% calc(calc(100% - 75%) / 2);
+    border-radius: 10px;
+    border: 5px solid orange;
+}
+
+a{
     margin: 6px;
-    padding:6px;
     text-decoration: none;
-    border: 3px solid #0069cc;
+    border: 3 solid #00becc;
     border-radius: 6px;
     background: #0086cc;
     color: white;
-    display: block;
 }
 
 p{
