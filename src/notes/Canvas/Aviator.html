@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="js/three.js"></script>
+    <link rel="stylesheet" href="../../stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/aviator.css">
+</head>
+<body>
+    <div id="world"></div>
+    <script>
+    var Colors = {
+            red: 0xf25346,
+            white: 0xd8d0d1,
+            brown: 0x59332e,
+            pink: 0xF5986E,
+            brownDark: 0x23190f,
+            blue: 0x68c3c0,
+        };
+    window.addEventListener('load',init,false)
+    function init() {
+        // set up the scene, the camera and the renderer
+        createScene();
+
+        // add the lights
+        createLights();
+
+        // add the objects
+        createPlane();
+        createSea();
+        createSky();
+
+        // start a loop that will update the objects' positions 
+        // and render the scene on each frame
+        loop();
+    }
+
+    var scene, camera, fieldOfView, aspectRatio, nearPlane, farPlane,
+    HEIGHT, WIDTH, renderer, container;
+    function createScene() {
+    	// Get the width and the height of the screen,
+        // use them to set up the aspect ratio of the camera 
+        // and the size of the renderer.
+        HEIGHT = window.innerHeight;
+        WIDTH = window.innerWidth;
+
+        //Create the scene
+        scene = new THREE.Scene();
+
+        //Add a fog effect to the scene; same color as the background
+        //color used in the style sheet
+        scene.fog = new THREE.Fog(0xf7d9aa, 100, 950);
+    }
+    </script>
+</body>
+</html>
