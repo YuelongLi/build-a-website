@@ -1,44 +1,74 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Simple geometry</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" media="screen" href="../../stylesheets/canvas.css" />
-        <script src="js/three.js"></script>
-    </head>
-    
-    <body>
-        <script>
-            var scene = new THREE.Scene();
-            var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            var renderer = new THREE.WebGLRenderer();
-            renderer.setSize(window.innerWidth, window.innerHeight, false);
-            document.body.appendChild(renderer.domElement);
-            var geometry = new THREE.TorusGeometry(2,1, 50, 50);
-            var material = new THREE.MeshNormalMaterial({flatShading:false});
-            var cube = new THREE.Mesh(geometry, material);
-            scene.add(cube);
 
-            function V(a,b,c){
-                return new THREE.Vector3(a,b,c);
-            }
+<head>
+    <meta charset="utf-8" />
+    <title>Simple geometry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../stylesheets/canvas.css" />
+    <script src="js/three.js"></script>
+    <script src="js/OrbitControls.js"></script>
+</head>
 
-            console.log(V(0,0,0));
+<body>
+    <script>
+        window.addEventListener("resize", onResize);
+        function onResize() {
+            var height = window.innerHeight * 0.75, width = window.innerWidth * 0.75;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        }
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
+        var controls = new THREE.OrbitControls(camera);
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth * 0.75, window.innerHeight * 0.75, false);
+        document.body.appendChild(renderer.domElement);
+        var geometry = new THREE.TorusGeometry(2, 1, 50, 50);
+        var material = new THREE.MeshStandardMaterial({
+                color: 0xabcdef,
+                transparent: false,
+                opacity: .6,
+            });
+        var torus = new THREE.Mesh(geometry, material);
+        scene.add(torus);
 
-            var faceGeometry = new THREE.Geometry();
-            faceGeometry.vertices.push(
-                new THREE.Vector3(0,0,0),
-                V(10,0,0),
-                V(0,-10,0),
-                V(0,0,10)          
-            );
-            faceGeometry.faces.push(new THREE.Face3(0,1,2));
-            var tetrahedron = new THREE.Mesh(faceGeometry,material);
-            scene.add(tetrahedron);
 
-            camera.position.z = 6;
+        var geom = new THREE.Geometry();
+        var v1 = new THREE.Vector3(0, 0, 1);
+        var v2 = new THREE.Vector3(0, 1, 2);
+        var v3 = new THREE.Vector3(1, 1, 0);
+
+        geom.vertices.push(v1);
+        geom.vertices.push(v2);
+        geom.vertices.push(v3);
+        geom.faces.push(new THREE.Face3(0, 1, 2));
+        geom.faces.push(new THREE.Face3(0, 2, 1));
+        geom.computeFaceNormals();
+
+        var light = new THREE.PointLight(0xffffff, 1, 50);
+            light.position.set(1,2,5);
+            scene.add(light);
+
+        var object = new THREE.Mesh(geom, new THREE.MeshNormalMaterial());
+
+        scene.add(object); // scene.addObject is supposed to be used internally only, sorry about that.
+
+        camera.position.z = 6;
+        renderer.render(scene, camera);
+        function animate() {
+
+            requestAnimationFrame(animate);
+
+            // required if controls.enableDamping or controls.autoRotate are set to true
+            controls.update();
+
             renderer.render(scene, camera);
-        </script>
-    </body>
+
+        }
+        animate();
+    </script>
+</body>
+
 </html>
