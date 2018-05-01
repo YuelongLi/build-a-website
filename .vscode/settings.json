@@ -2,9 +2,9 @@
     "python.linting.pylintEnabled": false,
     "python.pythonPath": "C:\\Anaconda3\\python.exe",
     "workbench.colorCustomizations": {
-        "activityBar.background": "#eb7d16",
+        "activityBar.background": "#1e558b",
         "activityBar.foreground": "#ffffff",
         "activityBarBadge.background": "#ffffff3b",
-        "statusBar.background": "#eb7d16"
+        "statusBar.background": "#1e558b"
     }
 }
