@@ -16,9 +16,7 @@ body{
 }
 
 canvas {
-    margin: 5% calc(calc(100% - 75%) / 2);
-    border-radius: 10px;
-    border: 5px solid orange;
+    margin:0;
 }
 
 a{

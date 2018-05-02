@@ -6,7 +6,7 @@
     <title>Simple geometry</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../../stylesheets/canvas.css" />
-    <script src="js/three.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.js"></script>
     <script src="js/OrbitControls.js"></script>
 </head>
 
@@ -14,7 +14,7 @@
     <script>
         window.addEventListener("resize", onResize);
         function onResize() {
-            var height = window.innerHeight * 0.75, width = window.innerWidth * 0.75;
+            var height = window.innerHeight, width = window.innerWidth;
             renderer.setSize(width, height);
             camera.aspect = width / height;
             camera.updateProjectionMatrix();
@@ -23,14 +23,14 @@
         var camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
         var controls = new THREE.OrbitControls(camera);
         var renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth * 0.75, window.innerHeight * 0.75, false);
+        renderer.setSize(window.innerWidth, window.innerHeight, false);
         document.body.appendChild(renderer.domElement);
         var geometry = new THREE.TorusGeometry(2, 1, 50, 50);
         var material = new THREE.MeshStandardMaterial({
-                color: 0xabcdef,
-                transparent: false,
-                opacity: .6,
-            });
+            color: 0xabcdef,
+            transparent: true,
+            opacity: .6,
+        });
         var torus = new THREE.Mesh(geometry, material);
         scene.add(torus);
 
@@ -47,9 +47,22 @@
         geom.faces.push(new THREE.Face3(0, 2, 1));
         geom.computeFaceNormals();
 
-        var light = new THREE.PointLight(0xffffff, 1, 50);
-            light.position.set(1,2,5);
-            scene.add(light);
+        var sphere = new THREE.SphereGeometry(0.1, 32, 32);
+        
+        var light1,light2,light3,light4;
+
+        light1 = new THREE.PointLight(0xff0040, 2, 50);
+        light1.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xff0040 })));
+        scene.add(light1);
+        light2 = new THREE.PointLight(0x0040ff, 2, 50);
+        light2.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0x0040ff })));
+        scene.add(light2);
+        light3 = new THREE.PointLight(0x80ff80, 2, 50);
+        light3.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0x80ff80 })));
+        scene.add(light3);
+        light4 = new THREE.PointLight(0xffaa00, 2, 50);
+        light4.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xffaa00 })));
+        scene.add(light4);
 
         var object = new THREE.Mesh(geom, new THREE.MeshNormalMaterial());
 
@@ -57,9 +70,23 @@
 
         camera.position.z = 6;
         renderer.render(scene, camera);
+        var time = 0;
         function animate() {
 
             requestAnimationFrame(animate);
+            time+=0.01;
+            light1.position.x = Math.sin(time * 0.7) * 3;
+            light1.position.y = -Math.cos(time * 0.5) * 3;
+            light1.position.z = Math.cos(time * 0.3) * 3;
+            light2.position.x = Math.cos(time * 0.3) * 3;
+            light2.position.y = Math.sin(time * 0.5) * 3;
+            light2.position.z = -Math.sin(time * 0.7) * 3;
+            light3.position.x = -Math.sin(time * 0.7) * 3;
+            light3.position.y = -Math.cos(time * 0.3) * 3;
+            light3.position.z = -Math.sin(time * 0.5) * 3;
+            light4.position.x = Math.sin(time * 0.3) * 3;
+            light4.position.y = Math.cos(time * 0.7) * 3;
+            light4.position.z = -Math.sin(time * 0.5) * 3;
 
             // required if controls.enableDamping or controls.autoRotate are set to true
             controls.update();
