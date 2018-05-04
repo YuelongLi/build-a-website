@@ -22,14 +22,14 @@
         var scene = new THREE.Scene();
         var camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
         var controls = new THREE.OrbitControls(camera);
-        var renderer = new THREE.WebGLRenderer();
+        var renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight, false);
         document.body.appendChild(renderer.domElement);
         var geometry = new THREE.TorusGeometry(2, 1, 50, 50);
         var material = new THREE.MeshStandardMaterial({
-            color: 0xabcdef,
+            color: 0xffffff,
             transparent: true,
-            opacity: .6,
+            opacity: .7,
         });
         var torus = new THREE.Mesh(geometry, material);
         scene.add(torus);
@@ -47,9 +47,9 @@
         geom.faces.push(new THREE.Face3(0, 2, 1));
         geom.computeFaceNormals();
 
-        var sphere = new THREE.SphereGeometry(0.1, 32, 32);
-        
-        var light1,light2,light3,light4;
+        var sphere = new THREE.CubeGeometry(0.1, 0.1, 0.1);
+
+        var light1, light2, light3, light4;
 
         light1 = new THREE.PointLight(0xff0040, 2, 50);
         light1.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xff0040 })));
@@ -64,17 +64,26 @@
         light4.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xffaa00 })));
         scene.add(light4);
 
-        var object = new THREE.Mesh(geom, new THREE.MeshNormalMaterial());
+        var object = new THREE.Mesh(geom, material);
 
-        scene.add(object); // scene.addObject is supposed to be used internally only, sorry about that.
+        // scene.add(object); // scene.addObject is supposed to be used internally only, sorry about that.
 
-        camera.position.z = 6;
+        camera.position.z = 12;
         renderer.render(scene, camera);
+
+        var helper = new THREE.GridHelper(10, 100, 0xabcdef, 0xaaaaaa);
+        helper.position.y = - 2;
+        helper.material.opacity = 0.25;
+        
+        helper.material.transparent = true;
+        scene.add(helper);
+
+
         var time = 0;
         function animate() {
 
             requestAnimationFrame(animate);
-            time+=0.01;
+            time += 0.01;
             light1.position.x = Math.sin(time * 0.7) * 3;
             light1.position.y = -Math.cos(time * 0.5) * 3;
             light1.position.z = Math.cos(time * 0.3) * 3;
